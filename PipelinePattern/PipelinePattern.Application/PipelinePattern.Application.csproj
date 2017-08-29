@@ -43,7 +43,13 @@
     <Compile Include="Base\IPipeline.cs" />
     <Compile Include="Base\Pipeline.cs" />
     <Compile Include="Base\PipelineExtensions.cs" />
+    <Compile Include="ConcretePipes\Filters\FilterByAge.cs" />
+    <Compile Include="ConcretePipes\Filters\FilterByPersonType.cs" />
+    <Compile Include="ConcretePipes\Models\Persons\PersonsResponse.cs" />
+    <Compile Include="ConcretePipes\Models\Persons\PersonsRequest.cs" />
+    <Compile Include="ConcretePipes\PersonsPipeline.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
