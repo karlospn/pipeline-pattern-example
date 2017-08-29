@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using PipelinePattern.Application.Base;
 using PipelinePattern.Application.ConcretePipes.Filters;
 using PipelinePattern.Application.ConcretePipes.Models.Persons;
@@ -7,9 +10,9 @@ using PipelinePattern.Application.ConcretePipes.Transforms;
 
 namespace PipelinePattern.Application.ConcretePipes
 {
-    public class PersonsPipeline : Pipeline<IEnumerable<PersonsRequest>, IEnumerable<PersonsResponse>>
+    public class NestingPipeline : Pipeline<IEnumerable<PersonsRequest>, IEnumerable<PersonsResponse>>
     {
-        public PersonsPipeline()
+        public NestingPipeline()
         {
             PipeFuncy = BuildPipe();
         }
@@ -19,6 +22,7 @@ namespace PipelinePattern.Application.ConcretePipes
             return input => input
                 .Pipe(new FilterByAge())
                 .Pipe(new FilterByPersonType())
+                .Pipe(new CountryPipeline())
                 .Pipe(new CreatePersonsRequest());
         }
     }

@@ -6,5 +6,6 @@
         {
             return pipeline.Process(input);
         }
+
     }
 }
