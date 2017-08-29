@@ -8,13 +8,13 @@ using PipelinePattern.Application.ConcretePipes.Models.Persons;
 
 namespace PipelinePattern.Application.ConcretePipes.Filters
 {
-    public class FilterByPersonType : IPipeline<List<PersonsRequest>, List<PersonsRequest>>
+    public class FilterByPersonType : IPipeline<IEnumerable<PersonsRequest>, IEnumerable<PersonsRequest>>
     {
-        public List<PersonsRequest> Process(List<PersonsRequest> input)
+        public IEnumerable<PersonsRequest> Process(IEnumerable<PersonsRequest> input)
         {
             return input.Any(x => !Enum.IsDefined(typeof(PersonType), x.Type))
                 ? throw new Exception("Type not valid")
-                : input.Where(x => x.Type != PersonType.TypeA) as List<PersonsRequest>;
+                : input.Where(x => x.Type != PersonType.TypeA);
         }
     }
 }

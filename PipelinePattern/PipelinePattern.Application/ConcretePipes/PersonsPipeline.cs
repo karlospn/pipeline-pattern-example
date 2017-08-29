@@ -6,14 +6,14 @@ using PipelinePattern.Application.ConcretePipes.Models.Persons;
 
 namespace PipelinePattern.Application.ConcretePipes
 {
-    public class PersonsPipeline : Pipeline<List<PersonsRequest>, List<PersonsRequest>>
+    public class PersonsPipeline : Pipeline<IEnumerable<PersonsRequest>, IEnumerable<PersonsRequest>>
     {
         public PersonsPipeline()
         {
             PipeFuncy = BuildPipe();
         }
 
-        private Func<List<PersonsRequest>, List<PersonsRequest>> BuildPipe()
+        private Func<IEnumerable<PersonsRequest>, IEnumerable<PersonsRequest>> BuildPipe()
         {
             return input => input
                 .Pipe(new FilterByAge())
